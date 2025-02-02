@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrei Dorin - Technical Support Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=Roboto+Condensed:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1d4ed8;
+            --accent-teal: #0d9488;
+            --dark-bg: #1e293b;
+            --light-bg: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light-bg);
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 3px solid var(--primary-blue);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-blue);
+            margin: 0 auto 1rem;
+            overflow: hidden;
+            animation: scaleUp 1s ease-out forwards;
+            opacity: 0;
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .profile-photo:hover {
+            transform: rotate(3deg) scale(1.1);
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-photo:hover img {
+            transform: scale(1.1);
+        }
+
+        .contact-bar {
+            background: var(--dark-bg);
+            color: white;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .contact-bar div {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .contact-bar div:hover {
+            transform: translateY(-3px);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .contact-bar div::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-teal);
+            transition: width 0.3s ease;
+        }
+
+        .contact-bar div:hover::after {
+            width: 100%;
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 2rem 0;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-teal);
+        }
+
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .experience-card {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 2rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: var(--light-bg);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.5s ease;
+        }
+
+        .experience-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .experience-card:hover {
+            transform: translateX(5px);
+        }
+
+        .experience-date {
+            font-weight: 500;
+            color: var(--primary-blue);
+        }
+
+        .management-badge {
+            background: var(--accent-teal);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 0.5rem 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-category {
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .skill-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .skill-icon {
+            color: var(--accent-teal);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-list li:hover .skill-icon {
+            transform: rotate(15deg) scale(1.2);
+            color: var(--primary-blue);
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .language-item {
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .language-level {
+            color: var(--accent-teal);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <div class="profile-photo">
+                <img src="profile.jpg" alt="Andrei Dorin">
+            </div>
+            <h1>Vijiala Andrei Dorin</h1>
+            <p>Senior Technical Support Specialist</p>
+        </div>
+
+        <div class="contact-bar">
+            <div>📞 +40 787 748 592</div>
+            <div>📧 andrei12dorin@gmail.com</div>
+            <div>📍 Constanța, Romania</div>
+        </div>
+
+        <h2 class="section-title" data-aos="fade-right">Professional Experience</h2>
+
+        <div class="experience-grid">
+            <div class="experience-card visible" data-aos="fade-left">
+                <div class="experience-date">2022 - 2024</div>
+                <div>
+                    <h3>CGS Romania | Dell Spain Project</h3>
+                    <div class="management-badge">Level 2 Technical Support</div>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-tools skill-icon"></i>Advanced hardware/software diagnostics</li>
+                        <li><i class="fas fa-chart-line skill-icon"></i>Quality control assistance</li>
+                        <li><i class="fas fa-hands-helping skill-icon"></i>Peer mentoring for new team members</li>
+                        <li><i class="fas fa-database skill-icon"></i>Technical documentation maintenance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-card visible" data-aos="fade-left">
+                <div class="experience-date">2019 - 2022</div>
+                <div>
+                    <h3>Sykes Romania | Samsung Spain Project</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-mobile-alt skill-icon"></i>Mobile device technical support</li>
+                        <li><i class="fas fa-comments skill-icon"></i>Bilingual customer service (Spanish/English)</li>
+                        <li><i class="fas fa-database skill-icon"></i>Incident tracking and resolution</li>
+                        <li><i class="fas fa-balance-scale skill-icon"></i>Warranty verification process</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title" data-aos="fade-right">Core Competencies</h2>
+
+        <div class="skills-grid">
+            <div class="skill-category" data-aos="zoom-in">
+                <h3>Technical Expertise</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-cogs skill-icon"></i>CRM Systems (Salesforce, Zendesk)</li>
+                    <li><i class="fas fa-file-excel skill-icon"></i>Advanced MS Office Suite</li>
+                    <li><i class="fas fa-network-wired skill-icon"></i>Remote Support Tools</li>
+                    <li><i class="fas fa-chart-pie skill-icon"></i>Technical Reporting</li>
+                </ul>
+            </div>
+
+            <div class="skill-category" data-aos="zoom-in">
+                <h3>Operational Skills</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-comments skill-icon"></i>Multilingual Support</li>
+                    <li><i class="fas fa-sync-alt skill-icon"></i>Process Optimization</li>
+                    <li><i class="fas fa-clock skill-icon"></i>SLA Compliance</li>
+                    <li><i class="fas fa-share-alt skill-icon"></i>Knowledge Transfer</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title" data-aos="fade-right">Career Highlights</h2>
+
+        <div class="skills-grid">
+            <div class="skill-category" data-aos="flip-up">
+                <h3>Professional Growth</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-level-up-alt skill-icon"></i>Promoted to Level 2 Support for consistent performance</li>
+                    <li><i class="fas fa-lightbulb skill-icon"></i>Implemented efficiency improvements in workflows</li>
+                    <li><i class="fas fa-users skill-icon"></i>Key contributor to team knowledge sharing</li>
+                </ul>
+            </div>
+
+            <div class="skill-category" data-aos="flip-up">
+                <h3>Technical Achievements</h3>
+                <ul class="skill-list">
+                    <li><i class="fas fa-bug skill-icon"></i>Consistently resolved complex technical cases</li>
+                    <li><i class="fas fa-book skill-icon"></i>Developed troubleshooting documentation</li>
+                    <li><i class="fas fa-comment-dots skill-icon"></i>Recognized for client communication skills</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title" data-aos="fade-right">Language Proficiency</h2>
+
+        <div class="skills-grid">
+            <div class="skill-category" data-aos="fade-up">
+                <div class="language-grid">
+                    <div class="language-item">
+                        Spanish <span class="language-level">(C2 Professional)</span>
+                    </div>
+                    <div class="language-item">
+                        English <span class="language-level">(B2 Upper Intermediate)</span>
+                    </div>
+                    <div class="language-item">
+                        Romanian <span class="language-level">(Native)</span>
+                    </div>
+                    <div class="language-item">
+                        Catalan <span class="language-level">(C2 Professional)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title" data-aos="fade-right">Education</h2>
+        
+        <div class="experience-card visible" data-aos="fade-left">
+            <div class="experience-date">2018</div>
+            <div>
+                <h3>Secondary Education</h3>
+                <p>IES Joan Brudieu - La Seu d'Urgell, Spain</p>
+                <ul class="skill-list">
+                    <li><i class="fas fa-globe-europe skill-icon"></i>Bilingual Spanish/Catalan education</li>
+                    <li><i class="fas fa-laptop skill-icon"></i>Technology-focused curriculum</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 150
+        });
+
+        const cards = document.querySelectorAll('.experience-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => observer.observe(card));
+    </script>
+</body>
+</html>
