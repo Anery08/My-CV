@@ -90,40 +90,40 @@
             border-radius: 8px;
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1rem;
             flex-wrap: wrap;
             animation: slideIn 1s ease-out;
+        }
+
+        .contact-bar a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .contact-bar a:hover {
+            background: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+
+        .contact-bar a.call-btn {
+            background: var(--accent-teal);
+        }
+
+        .contact-bar a.email-btn {
+            background: var(--primary-blue);
         }
 
         @keyframes slideIn {
             from { transform: translateX(-100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
-        }
-
-        .contact-bar div {
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .contact-bar div:hover {
-            transform: translateY(-3px);
-            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .contact-bar div::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-teal);
-            transition: width 0.3s ease;
-        }
-
-        .contact-bar div:hover::after {
-            width: 100%;
         }
 
         .section-title {
@@ -144,9 +144,6 @@
         }
 
         .experience-card {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 2rem;
             padding: 1.5rem;
             border-radius: 8px;
             background: var(--light-bg);
@@ -161,13 +158,11 @@
             transform: translateX(0);
         }
 
-        .experience-card:hover {
-            transform: translateX(5px);
-        }
-
         .experience-date {
             font-weight: 500;
             color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
         .management-badge {
@@ -247,6 +242,28 @@
             margin-top: 0.5rem;
             display: block;
         }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            .contact-bar {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .contact-bar a {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .experience-date {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -260,9 +277,14 @@
         </div>
 
         <div class="contact-bar">
-            <div>📞 +40 787 748 592</div>
-            <div>📧 andrei12dorin@gmail.com</div>
-            <div>📍 Constanța, Romania</div>
+            <a href="tel:+40787748592" class="call-btn">
+                <i class="fas fa-phone"></i>
+                +40 787 748 592
+            </a>
+            <a href="mailto:andrei12dorin@gmail.com" class="email-btn">
+                <i class="fas fa-envelope"></i>
+                andrei12dorin@gmail.com
+            </a>
         </div>
 
         <h2 class="section-title" data-aos="fade-right">Professional Experience</h2>
