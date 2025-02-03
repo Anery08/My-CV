@@ -264,6 +264,31 @@
                 font-size: 1rem;
             }
         }
+        .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--primary-blue);
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.download-btn:hover {
+    background: var(--accent-teal);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.download-btn i {
+    font-size: 1.2rem;
+}
+
     </style>
 </head>
 <body>
@@ -285,6 +310,10 @@
                 <i class="fas fa-envelope"></i>
                 andrei12dorin@gmail.com
             </a>
+            <a href="CV.pdf" download class="download-btn">
+    <i class="fas fa-file-pdf"></i> Download CV
+</a>
+
         </div>
 
         <h2 class="section-title" data-aos="fade-right">Professional Experience</h2>
